@@ -1,29 +1,27 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
-export class Searchbar extends Component {
+export function Searchbar({onSub}) {
 
-    state = {
-        searchName: '',
-    }
+    const [searchName, setSearchName] = useState('');
 
-    handleChange = (e) => {
-        this.setState({ searchName: e.currentTarget.value.toLowerCase() });
-    }
-    handleSearch = (e) => {
+    const handleChange = (e) => {
+        setSearchName(e.currentTarget.value.toLowerCase());
+    };
+
+    const handleSearch = (e) => {
         e.preventDefault();
 
-        if (this.state.searchName.trim() === '') {
+        if (searchName.trim() === '') {
             return;
         };
 
-        this.props.onSub(this.state.searchName.trim());
+        onSub(searchName.trim());
         
-        this.setState({searchName: ''})
+        setSearchName('');
     }
-    render() {
         return (
             <header className="searchbar">
-                <form className="form" onSubmit={this.handleSearch}>
+                <form className="form" onSubmit={handleSearch}>
                     <button type="submit" className="button">
                         <span className="button-label">Search</span>
                     </button>
@@ -31,8 +29,8 @@ export class Searchbar extends Component {
                     <input
                         className="input"
                         name='name'
-                        value={this.state.searchName}
-                        onChange={this.handleChange}
+                        value={searchName}
+                        onChange={handleChange}
                         type="text"
                         autoComplete="off"
                         autoFocus
@@ -41,4 +39,3 @@ export class Searchbar extends Component {
                 </form>
             </header>)
     }
-}
