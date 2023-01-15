@@ -57,7 +57,6 @@ export function App() {
     toggleModal();
   }
 
-
     return (
       <div className="app" >
         <Searchbar onSub={handleSearch} />
