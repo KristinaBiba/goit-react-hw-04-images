@@ -3,13 +3,13 @@ import { createPortal } from 'react-dom';
 
 const modalRoot = document.getElementById('modal-root');
 
-export function Modal({toggleModal, src}) {
+export function Modal({ toggleModal, src }) {
 
     useEffect(() => {
         window.addEventListener('keydown', handleEsc)
 
         return () => { window.removeEventListener('keydown', handleEsc) }
-    }, []);
+    },);
 
     const handleEsc = (e) => {
         if (e.code === "Escape") {

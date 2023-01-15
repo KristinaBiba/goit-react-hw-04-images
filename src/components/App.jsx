@@ -6,7 +6,6 @@ import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { Modal } from "./Modal/Modal";
 import { Searchbar } from './Searchbar/Searchbar';
 import {Loader} from './Loader/Loader'
-import { useRef } from "react";
 
 export function App() {
   
@@ -33,7 +32,7 @@ export function App() {
         return response.json();
       })
       .then(data => {
-        setPhotos([...photos, ...data.hits]);
+        setPhotos(p => [...p, ...data.hits]);
         setTotalHits(Math.ceil(data.totalHits / 12));
       })
       .catch(error => {
