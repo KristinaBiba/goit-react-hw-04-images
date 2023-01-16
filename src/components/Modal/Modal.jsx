@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
+import PropTypes from 'prop-types';
+
 const modalRoot = document.getElementById('modal-root');
 
 export function Modal({ toggleModal, src }) {
@@ -28,4 +30,9 @@ export function Modal({ toggleModal, src }) {
                 <img src={src} alt="" />
             </div>
         </div>, modalRoot);
-    }
+}
+    
+Modal.propTypes = {
+    toggleModal: PropTypes.func,
+    src: PropTypes.string,
+}

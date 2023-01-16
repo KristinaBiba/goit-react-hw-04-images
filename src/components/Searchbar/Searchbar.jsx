@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 export function Searchbar({onSub}) {
 
     const [searchName, setSearchName] = useState('');
@@ -38,4 +40,8 @@ export function Searchbar({onSub}) {
                     />
                 </form>
             </header>)
-    }
+}
+    
+Searchbar.propTypes = {
+    onSub: PropTypes.func,
+}
